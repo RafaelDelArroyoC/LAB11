@@ -36,6 +36,35 @@ public class GraphLink<E> {
         return null;
     }
 
+    //4.3
+    public boolean searchVertex(E data) {
+        return findVertex(data) != null;
+    }
+
+    //4.3
+    public boolean searchEdge(E verOri, E verDes) {
+        Vertex<E> vertexOri = findVertex(verOri);
+        Vertex<E> vertexDes = findVertex(verDes);
+
+        if (vertexOri != null && vertexDes != null) {
+            Nodo<Edge<E>> current = vertexOri.listAdj.getHead();
+            while (current != null) {
+                if (current.getData().equals(new Edge<>(vertexDes))) {
+                    return true;
+                }
+                current = current.getNext();
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+
+
     @Override
     public String toString() {
         return listVertex.toString();
